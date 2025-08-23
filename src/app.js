@@ -8,6 +8,8 @@ const { connectDB } = require("./utils/database");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
 const postRoutes = require("./routes/posts");
+const commentRoutes = require("./routes/comments");
+const likeRoutes = require("./routes/likes");
 
 /**
  * Express application setup and configuration
@@ -27,6 +29,8 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/comments", commentRoutes);
+app.use("/api/likes", likeRoutes);
 
 // Health check endpoint
 app.get("/health", (req, res) => {

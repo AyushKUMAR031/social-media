@@ -20,8 +20,8 @@ Your task is to debug existing issues, complete unfinished functionalities, and 
 - [ ] **Post/Content**
   - [x] Create content (text and/or media)
   - [x] Posts appear in followers’ feed
-  - [ ] Like and comment functionalities
-  - [ ] View likes and comments on your own posts
+  - [x] Like and comment functionalities
+  - [x] View likes and comments on your own posts
 - [ ] **Content Feed**
   - [ ] Personalized feed for each user
   - [ ] Includes:

@@ -32,7 +32,9 @@ const createPost = async ({
  */
 const getPostById = async (postId) => {
   const result = await query(
-    `SELECT p.*, u.username, u.full_name
+    `SELECT p.*, u.username, u.full_name,
+            (SELECT COUNT(*) FROM likes WHERE post_id = p.id) AS like_count,
+            (SELECT COUNT(*) FROM comments WHERE post_id = p.id AND is_deleted = FALSE) AS comment_count
      FROM posts p
      JOIN users u ON p.user_id = u.id
      WHERE p.id = $1`,
@@ -51,7 +53,9 @@ const getPostById = async (postId) => {
  */
 const getPostsByUserId = async (userId, limit = 20, offset = 0) => {
   const result = await query(
-    `SELECT p.*, u.username, u.full_name
+    `SELECT p.*, u.username, u.full_name,
+            (SELECT COUNT(*) FROM likes WHERE post_id = p.id) AS like_count,
+            (SELECT COUNT(*) FROM comments WHERE post_id = p.id AND is_deleted = FALSE) AS comment_count
      FROM posts p
      JOIN users u ON p.user_id = u.id
      WHERE p.user_id = $1
@@ -82,7 +86,9 @@ const deletePost = async (postId, userId) => {
 // This should include pagination and ordering by creation date
 const getFeedPosts = async (userId, limit = 20, offset = 0) => {
   const result = await query(
-    `SELECT p.*, u.username, u.full_name
+    `SELECT p.*, u.username, u.full_name,
+            (SELECT COUNT(*) FROM likes WHERE post_id = p.id) AS like_count,
+            (SELECT COUNT(*) FROM comments WHERE post_id = p.id AND is_deleted = FALSE) AS comment_count
      FROM posts p
      JOIN users u ON p.user_id = u.id
      JOIN follows f ON f.followed_id = p.user_id
