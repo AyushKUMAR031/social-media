@@ -1,7 +1,3 @@
-Got it. Here’s your **task brief** converted into a clean **Markdown document**:
-
----
-
 # Backend Task – Social Media Platform
 
 ## Overview
@@ -14,42 +10,32 @@ Your task is to debug existing issues, complete unfinished functionalities, and 
 
 ## Features to Implement
 
-* **User**
-
-  * Create a user profile
-  * Login to the created profile
-  * Unique identifier for each user
-  * Authentication mechanism
-  * Searchable by name/unique identifier
-  * Follow/unfollow other users
-
-* **Post/Content**
-
-  * Create content (text and/or media)
-  * Posts appear in followers’ feed
-  * Like and comment functionalities
-  * View likes and comments on your own posts
-
-* **Content Feed**
-
-  * Personalized feed for each user
-  * Includes:
-
-    * Posts by followed users
-    * Posts created by the user
-  * Show number of likes and comments on each post
-
-* **Like**
-
-  * Users can like posts
-  * One like per user per post
-  * Ability to unlike a post
-
-* **Comment**
-
-  * Users can comment on posts (theirs or others’)
-  * Add, edit, delete comments
-  * Comments disabled if the post creator chooses so
+- [ ] **User**
+  - [ ] Create a user profile
+  - [ ] Login to the created profile
+  - [ ] Unique identifier for each user
+  - [ ] Authentication mechanism
+  - [ ] Searchable by name/unique identifier
+  - [ ] Follow/unfollow other users
+- [ ] **Post/Content**
+  - [ ] Create content (text and/or media)
+  - [ ] Posts appear in followers’ feed
+  - [ ] Like and comment functionalities
+  - [ ] View likes and comments on your own posts
+- [ ] **Content Feed**
+  - [ ] Personalized feed for each user
+  - [ ] Includes:
+    - [ ] Posts by followed users
+    - [ ] Posts created by the user
+  - [ ] Show number of likes and comments on each post
+- [ ] **Like**
+  - [ ] Users can like posts
+  - [ ] One like per user per post
+  - [ ] Ability to unlike a post
+- [ ] **Comment**
+  - [ ] Users can comment on posts (theirs or others’)
+  - [ ] Add, edit, delete comments
+  - [ ] Comments disabled if the post creator chooses so
 
 ---
 
@@ -91,37 +77,23 @@ Your task is to debug existing issues, complete unfinished functionalities, and 
 
 ---
 
-## Bonus (Extra Points)
-
-1. **Scheduled Action**
-
-   * Allow users to schedule post publishing
-2. **Deployment**
-
-   * Deploy code and share server URL
-3. **GraphQL**
-
-   * Implement all APIs in GraphQL
-
----
-
 ## Deliverables
 
-* Updated **`schema.sql`** file
-* **ER Diagram**
-* **API Documentation**
+- [ ] Updated **`schema.sql`** file
+- [ ] **ER Diagram**
+- [ ] **API Documentation**
 
-  * Postman collection or Markdown file with request/response examples
-* Source Code
+  - [ ] Postman collection or Markdown file with request/response examples
+- [ ] Source Code
 
-  * Shared via Google Drive (ZIP file, exclude `node_modules`)
-* Hosted API URL (Heroku, Render, Netlify, etc.)
-* Loom video walkthrough (\~3-5 minutes):
+  - [ ] Shared via Google Drive (ZIP file, exclude `node_modules`)
+- [ ] Hosted API URL (Heroku, Render, Netlify, etc.)
+- [ ] Loom video walkthrough (\~3-5 minutes):
 
-  * Bugs identified and fixed
-  * Features completed/extended
-  * How AI was used for development
-  * (Optional) Brief overview of code and file structure
+  - [ ] Bugs identified and fixed
+  - [ ] Features completed/extended
+  - [ ] How AI was used for development
+  - [ ] (Optional) Brief overview of code and file structure
 
 ---
 
@@ -139,12 +111,3 @@ Your task is to debug existing issues, complete unfinished functionalities, and 
 5. API documentation
 
 ---
-
-## Important
-
-* Plagiarism is strictly prohibited; originality is expected.
-* Do **not** upload your code to public VCS (GitHub, GitLab, etc.).
-* In case of clarifications, contact: **[soumendu@toddleapp.com](mailto:soumendu@toddleapp.com)**
-
----
-

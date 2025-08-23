@@ -1,0 +1,3 @@
+- Do not try to remove previous implementations approach, rather try to debug them.
+- add atomic git commits to changes made by you.
+- before attempting to resolve the issue/prompt, report your findings and solution.
