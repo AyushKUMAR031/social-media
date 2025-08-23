@@ -119,8 +119,7 @@ const remove = async (req, res) => {
   }
 };
 
-// TODO: Implement getFeed controller for content feed functionality
-// This should return posts from users that the current user follows
+// getFeed controller for feed content from users post and followed users posts
 const getFeed = async (req, res) => {
   try {
     const userId = req.user.id;

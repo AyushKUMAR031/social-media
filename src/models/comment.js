@@ -1,14 +1,7 @@
 const { query } = require("../utils/database");
 
-/**
- * Comment model for managing post comments
- */
+//Comment model for managing post comments
 
-/**
- * Add a new comment to a post
- * @param {Object} commentData - Comment data (user_id, post_id, content)
- * @returns {Promise<Object>} Created comment
- */
 const addComment = async ({ user_id, post_id, content }) => {
   const result = await query(
     `INSERT INTO comments (user_id, post_id, content, created_at, is_deleted)
@@ -19,11 +12,6 @@ const addComment = async ({ user_id, post_id, content }) => {
   return result.rows[0];
 };
 
-/**
- * Update an existing comment
- * @param {Object} commentData - Comment data (comment_id, user_id, content)
- * @returns {Promise<Object|null>} Updated comment or null if not found/unauthorized
- */
 const editComment = async ({ comment_id, user_id, content }) => {
   const result = await query(
     `UPDATE comments
@@ -35,11 +23,6 @@ const editComment = async ({ comment_id, user_id, content }) => {
   return result.rows[0] || null;
 };
 
-/**
- * Remove (soft delete) a comment
- * @param {Object} commentData - Comment data (comment_id, user_id)
- * @returns {Promise<boolean>} True if comment was removed, false otherwise
- */
 const removeComment = async ({ comment_id, user_id }) => {
   const result = await query(
     `UPDATE comments
@@ -51,11 +34,7 @@ const removeComment = async ({ comment_id, user_id }) => {
   return result.rowCount > 0;
 };
 
-/**
- * Get comments for a post by post ID
- * @param {number} post_id - Post ID
- * @returns {Promise<Array>} Array of comment objects
- */
+// Get comments for a post by post ID
 const getCommentsByPostId = async (post_id) => {
   const result = await query(
     `SELECT c.*, u.username, u.full_name

@@ -2,13 +2,8 @@ const { query } = require("../utils/database");
 
 /**
  * Like model for managing post likes
-  */
+*/
 
-/**
- * Create a new like
- * @param {Object} likeData - Like data (user_id, post_id)
- * @returns {Promise<Object>} Created like
- */
 const createLike = async ({ user_id, post_id }) => {
   const result = await query(
     `INSERT INTO likes (user_id, post_id, created_at)
@@ -19,11 +14,6 @@ const createLike = async ({ user_id, post_id }) => {
   return result.rows[0];
 };
 
-/**
- * Delete a like
- * @param {Object} likeData - Like data (user_id, post_id)
- * @returns {Promise<boolean>} True if like was deleted, false otherwise
- */
 const deleteLike = async ({ user_id, post_id }) => {
   const result = await query(
     `DELETE FROM likes WHERE user_id = $1 AND post_id = $2`,
@@ -32,11 +22,6 @@ const deleteLike = async ({ user_id, post_id }) => {
   return result.rowCount > 0;
 };
 
-/**
- * Get likes for a post by post ID
- * @param {number} post_id - Post ID
- * @returns {Promise<Array>} Array of like objects
- */
 const getLikesByPostId = async (post_id) => {
   const result = await query(
     `SELECT l.user_id, u.username, u.full_name, l.created_at
@@ -49,11 +34,6 @@ const getLikesByPostId = async (post_id) => {
   return result.rows;
 };
 
-/**
- * Get posts liked by a user
- * @param {number} user_id - User ID
- * @returns {Promise<Array>} Array of post objects liked by the user
- */
 const getLikedPostsByUserId = async (user_id) => {
   const result = await query(
     `SELECT p.*, u.username, u.full_name
@@ -67,11 +47,6 @@ const getLikedPostsByUserId = async (user_id) => {
   return result.rows;
 };
 
-/**
- * Check if a user has liked a post
- * @param {Object} likeData - Like data (user_id, post_id)
- * @returns {Promise<boolean>} True if user has liked the post, false otherwise
- */
 const hasUserLikedPost = async ({ user_id, post_id }) => {
   const result = await query(
     `SELECT 1 FROM likes WHERE user_id = $1 AND post_id = $2`,

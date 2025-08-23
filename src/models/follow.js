@@ -16,7 +16,6 @@ const unfollowUser = async (followerId, followedId) => {
   );
 };
 
-
 const getFollowing = async (userId) => {
   const result = await query(
     `SELECT u.id, u.username, u.full_name

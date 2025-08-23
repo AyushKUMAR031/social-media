@@ -4,11 +4,6 @@ const { query } = require("../utils/database");
  * Post model for database operations
  */
 
-/**
- * Create a new post
- * @param {Object} postData - Post data
- * @returns {Promise<Object>} Created post
- */
 const createPost = async ({
   user_id,
   content,
@@ -25,11 +20,6 @@ const createPost = async ({
   return result.rows[0];
 };
 
-/**
- * Get post by ID
- * @param {number} postId - Post ID
- * @returns {Promise<Object|null>} Post object or null
- */
 const getPostById = async (postId) => {
   const result = await query(
     `SELECT p.*, u.username, u.full_name,
@@ -44,13 +34,6 @@ const getPostById = async (postId) => {
   return result.rows[0] || null;
 };
 
-/**
- * Get posts by user ID
- * @param {number} userId - User ID
- * @param {number} limit - Number of posts to fetch
- * @param {number} offset - Offset for pagination
- * @returns {Promise<Array>} Array of posts
- */
 const getPostsByUserId = async (userId, limit = 20, offset = 0) => {
   const result = await query(
     `SELECT p.*, u.username, u.full_name,
@@ -100,6 +83,8 @@ const getFeedPosts = async (userId, limit = 20, offset = 0) => {
 
   return result.rows;
 };
+
+
 
 // TODO: Implement updatePost function for editing posts
 
