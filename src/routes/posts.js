@@ -31,7 +31,7 @@ router.delete("/:post_id", authenticateToken, remove);
 
 // TODO: Add route for content feed
 // GET /api/posts/feed - Get posts from followed users
-router.get("/feed", authenticateToken, getFeed);
+// router.get("/feed", authenticateToken, getFeed);
 
 
 // TODO: Add route for updating posts
