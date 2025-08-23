@@ -10,13 +10,13 @@ Your task is to debug existing issues, complete unfinished functionalities, and 
 
 ## Features to Implement
 
-- [ ] **User**
+- [x] **User**
   - [x] Create a user profile
   - [x] Login to the created profile
   - [x] Unique identifier for each user
   - [x] Authentication mechanism
   - [x] Searchable by name/unique identifier
-  - [ ] Follow/unfollow other users
+  - [x] Follow/unfollow other users
 - [ ] **Post/Content**
   - [ ] Create content (text and/or media)
   - [ ] Posts appear in followers’ feed
