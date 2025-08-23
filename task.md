@@ -17,25 +17,25 @@ Your task is to debug existing issues, complete unfinished functionalities, and 
   - [x] Authentication mechanism
   - [x] Searchable by name/unique identifier
   - [x] Follow/unfollow other users
-- [ ] **Post/Content**
+- [x] **Post/Content**
   - [x] Create content (text and/or media)
   - [x] Posts appear in followers’ feed
   - [x] Like and comment functionalities
   - [x] View likes and comments on your own posts
-- [ ] **Content Feed**
-  - [ ] Personalized feed for each user
-  - [ ] Includes:
-    - [ ] Posts by followed users
-    - [ ] Posts created by the user
-  - [ ] Show number of likes and comments on each post
-- [ ] **Like**
-  - [ ] Users can like posts
-  - [ ] One like per user per post
-  - [ ] Ability to unlike a post
-- [ ] **Comment**
-  - [ ] Users can comment on posts (theirs or others’)
-  - [ ] Add, edit, delete comments
-  - [ ] Comments disabled if the post creator chooses so
+- [x] **Content Feed**
+  - [x] Personalized feed for each user
+    - [x] Includes:
+      - [x] Posts by followed users
+      - [x] Posts created by the user
+  - [x] Show number of likes and comments on each post
+- [x] **Like**
+  - [x] Users can like posts
+  - [x] One like per user per post
+  - [x] Ability to unlike a post
+- [x] **Comment**
+  - [x] Users can comment on posts (theirs or others’)
+  - [x] Add, edit, delete comments
+  - [x] Comments disabled if the post creator chooses so
 
 ---
 

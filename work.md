@@ -93,3 +93,30 @@
    * Authentication: Required. (Only the owner of the post can delete it).
 
 -------------------------------------------------------------------------------------------------------------
+You can test "Comments disabled if the post creator chooses so" in Postman by following these steps:
+
+   1. Create a post with comments disabled:
+       * Method: POST
+       * URL: http://localhost:3000/api/posts
+       * Headers: Content-Type: application/json, Authorization: Bearer YOUR_JWT_TOKEN_HERE
+       * Body (raw, JSON):
+
+   1         {
+   2             "content": "This is a post with comments disabled.",
+   3             "comments_enabled": false
+   4         }
+       * Note the id of the post returned in the response.
+
+   2. Attempt to create a comment on that post:
+       * Method: POST
+       * URL: http://localhost:3000/api/comments
+       * Headers: Content-Type: application/json, Authorization: Bearer YOUR_JWT_TOKEN_HERE
+       * Body (raw, JSON):
+
+   1         {
+   2             "post_id": "THE_ID_FROM_STEP_1",
+   3             "content": "Trying to comment on a disabled post."
+   4         }
+       * Expected Result: You should receive a 403 Forbidden status code with the response: {"error": "Comments are disabled for this post"}.
+
+---------------------------------------------------------------------------------------------------------------------
