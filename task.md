@@ -19,7 +19,7 @@ Your task is to debug existing issues, complete unfinished functionalities, and 
   - [x] Follow/unfollow other users
 - [ ] **Post/Content**
   - [x] Create content (text and/or media)
-  - [ ] Posts appear in followers’ feed
+  - [x] Posts appear in followers’ feed
   - [ ] Like and comment functionalities
   - [ ] View likes and comments on your own posts
 - [ ] **Content Feed**

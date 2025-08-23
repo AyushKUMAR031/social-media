@@ -104,4 +104,5 @@ module.exports = {
   getPostById,
   getPostsByUserId,
   deletePost,
+  getFeedPosts,
 };

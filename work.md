@@ -68,3 +68,28 @@
 
 ----------------------------------------------------------------------------------------------------------------------
 
+ 1. Get current user's posts
+   * Method: GET
+   * URL: http://localhost:3000/api/posts/my
+   * Authentication: Required.
+   * Note: Due to the bug in the getMyPosts controller mentioned above, this route might not work as expected.
+
+  2. Get a single post by ID
+   * Method: GET
+   * URL: http://localhost:3000/api/posts/:post_id
+       * Replace :post_id with the actual ID of the post you want to retrieve.
+   * Authentication: Optional.
+
+  3. Get posts by a specific user
+   * Method: GET
+   * URL: http://localhost:3000/api/posts/user/:user_id
+       * Replace :user_id with the actual ID of the user whose posts you want to retrieve.
+   * Authentication: Optional.
+
+  4. Delete a post
+   * Method: DELETE
+   * URL: http://localhost:3000/api/posts/:post_id
+       * Replace :post_id with the actual ID of the post you want to delete.
+   * Authentication: Required. (Only the owner of the post can delete it).
+
+-------------------------------------------------------------------------------------------------------------

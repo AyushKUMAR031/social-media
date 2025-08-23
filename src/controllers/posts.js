@@ -3,6 +3,7 @@ const {
   getPostById,
   getPostsByUserId,
   deletePost,
+  getFeedPosts,
 } = require("../models/post.js");
 const logger = require("../utils/logger");
 
@@ -123,8 +124,17 @@ const remove = async (req, res) => {
 const getFeed = async (req, res) => {
   try {
     const userId = req.user.id;
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 20;
+
+    let page = parseInt(req.query.page);
+    if (isNaN(page) || page < 1) {
+      page = 1;
+    }
+
+    let limit = parseInt(req.query.limit);
+    if (isNaN(limit) || limit < 1) {
+      limit = 20;
+    }
+
     const offset = (page - 1) * limit;
 
     const posts = await getFeedPosts(userId, limit, offset);
@@ -153,4 +163,5 @@ module.exports = {
   getUserPosts,
   getMyPosts,
   remove,
+  getFeed,
 };
