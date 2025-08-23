@@ -76,7 +76,7 @@ const getUserPosts = async (req, res) => {
 // get current user's posts
 const getMyPosts = async (req, res) => {
   try {
-    const { user_id: userId } = req.params;
+    const userId = req.user.id;
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 20;
     const offset = (page - 1) * limit;

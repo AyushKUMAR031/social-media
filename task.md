@@ -18,7 +18,7 @@ Your task is to debug existing issues, complete unfinished functionalities, and 
   - [x] Searchable by name/unique identifier
   - [x] Follow/unfollow other users
 - [ ] **Post/Content**
-  - [ ] Create content (text and/or media)
+  - [x] Create content (text and/or media)
   - [ ] Posts appear in followers’ feed
   - [ ] Like and comment functionalities
   - [ ] View likes and comments on your own posts
