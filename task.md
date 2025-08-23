@@ -11,11 +11,11 @@ Your task is to debug existing issues, complete unfinished functionalities, and 
 ## Features to Implement
 
 - [ ] **User**
-  - [ ] Create a user profile
-  - [ ] Login to the created profile
-  - [ ] Unique identifier for each user
-  - [ ] Authentication mechanism
-  - [ ] Searchable by name/unique identifier
+  - [x] Create a user profile
+  - [x] Login to the created profile
+  - [x] Unique identifier for each user
+  - [x] Authentication mechanism
+  - [x] Searchable by name/unique identifier
   - [ ] Follow/unfollow other users
 - [ ] **Post/Content**
   - [ ] Create content (text and/or media)

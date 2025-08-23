@@ -1,9 +1,7 @@
 const { query } = require("../utils/database");
 const bcrypt = require("bcryptjs");
-
-/**
- * User model for database operations
- */
+ 
+//User model for database operations
 
 /**
  * Create a new user

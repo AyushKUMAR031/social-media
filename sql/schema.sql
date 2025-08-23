@@ -63,12 +63,12 @@ CREATE INDEX IF NOT EXISTS idx_comments_post_id ON comments(post_id);
 
 -- update timestamp trigger function
 CREATE OR REPLACE FUNCTION update_updated_at_column()
-RETURNS TRIGGER AS $
+RETURNS TRIGGER AS $$
 BEGIN
     NEW.updated_at = CURRENT_TIMESTAMP;
     RETURN NEW;
 END;
-$ language 'plpgsql';
+$$ language 'plpgsql';
 
 -- Apply update timestamp triggers
 CREATE TRIGGER update_users_updated_at BEFORE UPDATE ON users
