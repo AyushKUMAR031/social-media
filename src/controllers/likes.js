@@ -19,7 +19,8 @@ const likePost = async (req, res) => {
     res.status(201).json({ message: "Post liked successfully", like });
   } catch (error) {
     logger.critical("Like post error:", error);
-    if (error.code === '23505') { // Unique violation error code for PostgreSQL
+    if (error.code === '23505') { 
+      // Unique violation error code for PostgreSQL
       return res.status(409).json({ error: "You have already liked this post" });
     }
     res.status(500).json({ error: "Internal server error" });
