@@ -1,10 +1,4 @@
-const {
-  createPost,
-  getPostById,
-  getPostsByUserId,
-  deletePost,
-  getFeedPosts,
-} = require("../models/post.js");
+const { createPost, getPostById, getPostsByUserId, deletePost, getFeedPosts, updatePost, searchPosts} = require("../models/post.js");
 const logger = require("../utils/logger");
 
 //create a new post
@@ -152,9 +146,61 @@ const getFeed = async (req, res) => {
   }
 };
 
-// TODO: Implement updatePost controller for editing posts
+// Implement updatePost controller for editing posts
+const editPost = async (req, res) => {
+  try {
+    const { post_id } = req.params;
+    const userId = req.user.id;
+    const { content, media_url, comments_enabled } = req.validatedData;
 
-// TODO: Implement searchPosts controller for searching posts by content
+    const updatedPost = await updatePost(parseInt(post_id), userId, {
+      content,
+      media_url,
+      comments_enabled,
+    });
+
+    if (!updatedPost) {
+      return res.status(404).json({ error: "Post not found or no changes provided" });
+    }
+
+    res.json({ message: "Post updated successfully", post: updatedPost });
+  } catch (error) {
+    logger.critical("Update post error:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+// Implement searchPosts controller for searching posts by content
+const search = async (req, res) => {
+  try {
+    const { q } = req.query;
+    let page = parseInt(req.query.page);
+    if (isNaN(page) || page < 1) page = 1;
+
+    let limit = parseInt(req.query.limit);
+    if (isNaN(limit) || limit < 1) limit = 20;
+
+    const offset = (page - 1) * limit;
+
+    if (!q || q.trim() === "") {
+      return res.status(400).json({ error: "Search query is required" });
+    }
+
+    const posts = await searchPosts(q, limit, offset);
+
+    res.json({
+      posts,
+      pagination: {
+        page,
+        limit,
+        hasMore: posts.length === limit,
+      },
+    });
+  } catch (error) {
+    logger.critical("Search posts error:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
 
 module.exports = {
   create,
@@ -163,4 +209,6 @@ module.exports = {
   getMyPosts,
   remove,
   getFeed,
+  editPost,
+  search,
 };

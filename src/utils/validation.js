@@ -29,6 +29,12 @@ const updateUserSchema = Joi.object({
   full_name: Joi.string().max(100),
 });
 
+const updatePostSchema = Joi.object({
+  content: Joi.string().optional(),
+  media_url: Joi.string().uri().optional(),
+  comments_enabled: Joi.boolean().optional(),
+});
+
 /**
  * Middleware to validate request body against schema
  * @param {Joi.Schema} schema - Joi validation schema
@@ -56,4 +62,5 @@ module.exports = {
 	createPostSchema,
 	validateRequest,
 	updateUserSchema,
+	updatePostSchema,
 };
