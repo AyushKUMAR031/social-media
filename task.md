@@ -79,17 +79,18 @@ Your task is to debug existing issues, complete unfinished functionalities, and 
 
 ## Deliverables
 
-- [ ] Updated **`schema.sql`** file
-- [ ] **ER Diagram**
+- [x] Updated **`schema.sql`** file
+- [x] **ER Diagram**
+
 - [ ] **API Documentation**
-
   - [ ] Postman collection or Markdown file with request/response examples
-- [ ] Source Code
 
-  - [ ] Shared via Google Drive (ZIP file, exclude `node_modules`)
+- [x] Source Code
+
+- [ ] Shared via Google Drive (ZIP file, exclude `node_modules`)
 - [ ] Hosted API URL (Heroku, Render, Netlify, etc.)
-- [ ] Loom video walkthrough (\~3-5 minutes):
 
+- [ ] Loom video walkthrough (\~3-5 minutes):
   - [ ] Bugs identified and fixed
   - [ ] Features completed/extended
   - [ ] How AI was used for development
