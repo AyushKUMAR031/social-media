@@ -1,6 +1,7 @@
 const express = require("express");
-const { authenticateToken } = require("../middleware/auth");
-const { searchUsers, follow, unfollow, getMyFollowing, getMyFollowers, getFollowStats} = require("../controllers/users");
+const { authenticateToken , optionalAuth} = require("../middleware/auth");
+const { searchUsers, follow, unfollow, getMyFollowing, getMyFollowers, getFollowStats, getProfile ,updateProfile} = require("../controllers/users");
+const { validateRequest, updateUserSchema } = require("../utils/validation");
 
 const router = express.Router();
 
@@ -25,5 +26,12 @@ router.get("/followers", authenticateToken, getMyFollowers);
 // Get follow stats for a user
 router.get("/stats/:id?", authenticateToken, getFollowStats);
 
+
+// GET /api/users/:userId/profile - Get user profile
+router.get("/:userId/profile", optionalAuth, getProfile);
+
+
+// PUT /api/users/profile - Update authenticated user's profile
+router.put("/profile", authenticateToken, validateRequest(updateUserSchema), updateProfile);
 
 module.exports = router;

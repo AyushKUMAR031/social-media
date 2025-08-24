@@ -1,6 +1,6 @@
 const logger = require("../utils/logger");
-const { findUsersByName, getUserById } = require("../models/user");
-const { followUser, unfollowUser, getFollowing, getFollowers,getFollowCounts,} = require("../models/follow");
+const { findUsersByName, getUserById , getUserProfile, updateUserProfile} = require("../models/user");
+const { followUser, unfollowUser, getFollowing, getFollowers,getFollowCounts, } = require("../models/follow");
 
 const searchUsers = async (req, res) => {
   try {
@@ -92,6 +92,42 @@ const getFollowStats = async (req, res) => {
   }
 };
 
+const getProfile = async (req, res) => {
+  try {
+    const { userId } = req.params; 
+    const profile = await getUserProfile(userId);
+
+    if (!profile) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json({ profile });
+  } catch (error) {
+    logger.critical("Get user profile error:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+
+// Update user profile
+const updateProfile = async (req, res) => {
+  try {
+    const userId = req.user.id; 
+    const updatedData = req.validatedData; 
+
+    const updatedProfile = await updateUserProfile(userId, updatedData);
+
+    if (!updatedProfile) {
+      return res.status(400).json({ error: "No valid fields to update" });
+    }
+
+    res.json({ message: "Profile updated successfully", profile: updatedProfile });
+  } catch (error) {
+    logger.critical("Update user profile error:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 
 module.exports = {
   searchUsers,
@@ -100,4 +136,6 @@ module.exports = {
   getMyFollowing,
   getMyFollowers,
   getFollowStats,
+  getProfile,
+  updateProfile,
 };

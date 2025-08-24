@@ -38,7 +38,7 @@ const verifyPassword = async (plainPassword, hashedPassword) => {
   return await bcrypt.compare(plainPassword, hashedPassword);
 };
 
-// TODO: Implement findUsersByName function for search functionality
+// findUsersByName function for search functionality
 // This should support partial name matching and pagination
 const findUsersByName = async (searchTerm, limit = 10, offset = 0) => {
   const result = await query(
@@ -54,10 +54,52 @@ const findUsersByName = async (searchTerm, limit = 10, offset = 0) => {
 };
 
 
+// Implement getUserProfile function that includes follower/following counts
+const getUserProfile = async (userId) => {
+  const user = await query(
+    `SELECT 
+      u.id,
+      u.username,
+      u.full_name,
+      u.email,
+      (SELECT COUNT(*) FROM follows WHERE followed_id = u.id) AS follower_count,
+      (SELECT COUNT(*) FROM follows WHERE follower_id = u.id) AS following_count
+    FROM users u
+    WHERE u.id = $1`,
+    [userId]
+  );
+  return user.rows[0] || null;
+};
 
-// TODO: Implement getUserProfile function that includes follower/following counts
+// Update user profile
+const updateUserProfile = async (userId, { username, email, full_name }) => {
+  // Dynamically build SET clause
+  const fields = [];
+  const values = [];
+  let idx = 1;
 
-// TODO: Implement updateUserProfile function for profile updates
+  if (username) {
+    fields.push(`username = $${idx++}`);
+    values.push(username);
+  }
+  if (email) {
+    fields.push(`email = $${idx++}`);
+    values.push(email);
+  }
+  if (full_name) {
+    fields.push(`full_name = $${idx++}`);
+    values.push(full_name);
+  }
+
+  if (fields.length === 0) return null; // when i have nothing to update
+
+  values.push(userId); // last parameter for WHERE
+  const queryText = `UPDATE users SET ${fields.join(", ")} WHERE id = $${idx} RETURNING id, username, email, full_name, created_at`;
+
+  const result = await query(queryText, values);
+  return result.rows[0] || null;
+};
+
 
 module.exports = {
   createUser,
@@ -65,4 +107,6 @@ module.exports = {
   getUserById,
   verifyPassword,
   findUsersByName,
+  getUserProfile,
+  updateUserProfile,
 };
