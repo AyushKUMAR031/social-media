@@ -74,13 +74,14 @@ const getFeedPosts = async (userId, limit = 20, offset = 0) => {
             (SELECT COUNT(*) FROM comments WHERE post_id = p.id AND is_deleted = FALSE) AS comment_count
      FROM posts p
      JOIN users u ON p.user_id = u.id
-     JOIN follows f ON f.followed_id = p.user_id
-     WHERE f.follower_id = $1 AND p.is_deleted = false
+     LEFT JOIN follows f ON f.followed_id = p.user_id
+     WHERE (f.follower_id = $1 OR p.user_id = $1)
+     AND p.is_deleted = false
      ORDER BY p.created_at DESC
      LIMIT $2 OFFSET $3`,
     [userId, limit, offset],
   );
-
+  //note : left join is used to include posts by the user themselves by checking f.follower_id = $1 OR p.user_id = $1
   return result.rows;
 };
 
